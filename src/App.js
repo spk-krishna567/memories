@@ -1,13 +1,25 @@
 import "./App.css";
 import React from "react";
-function App() {
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+
+import Users from "./user/pages/Users";
+import NewPlace from "./places/pages/NewPlace";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>hi ! there</p>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Users />} exact={true} />
+        <Route path="/home" element={<Navigate to="/" />} />
+        <Route path="/places/new" element={<NewPlace />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
